@@ -1,0 +1,2986 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Model Directory 2026 — Button Filters</title>
+  <meta name="description" content="Filter local and cloud AI models by deployment, use case, RAM, GPU, CPU, quantization, runtime, context, speed, license, and offline support using buttons only." />
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --surface: #ffffff;
+      --topbar: rgba(255, 255, 255, 0.84);
+      --text: #151724;
+      --muted: #5f6680;
+      --border: #e6e8f2;
+      --accent: #5b5bd6;
+      --accent-2: #8b5cf6;
+      --green: #16a34a;
+      --blue: #2563eb;
+      --amber: #d97706;
+      --red: #dc2626;
+      --shadow: 0 10px 30px rgba(20, 22, 40, 0.08);
+      --radius: 18px;
+      --radius-lg: 24px;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b1020;
+      --surface: #12182b;
+      --topbar: rgba(11, 16, 32, 0.84);
+      --text: #eef1ff;
+      --muted: #9aa3c7;
+      --border: #233054;
+      --accent: #7c7cff;
+      --accent-2: #a855f7;
+      --shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Noto Sans Bengali", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(139, 92, 246, 0.13), transparent 38%),
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.11), transparent 34%),
+        var(--bg);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1280px, calc(100% - 28px));
+      margin: 0 auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 8px;
+      background: var(--surface);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      z-index: 100;
+    }
+
+    .skip-link:focus {
+      left: 12px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--topbar);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      min-height: 68px;
+      padding: 10px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 850;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .logo {
+      width: 38px;
+      height: 38px;
+      border-radius: 13px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      box-shadow: 0 10px 24px rgba(91, 91, 214, 0.25);
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-btn {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+
+    .icon-btn:hover {
+      border-color: var(--accent);
+    }
+
+    .hero {
+      padding: 64px 0 26px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 24px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(91, 91, 214, 0.10);
+      color: var(--accent);
+      font-weight: 750;
+      font-size: 13px;
+      border: 1px solid rgba(91, 91, 214, 0.16);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(34px, 5.2vw, 64px);
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2), #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.65;
+      max-width: 900px;
+    }
+
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h3 {
+      margin: 0 0 10px;
+      font-size: 17px;
+    }
+
+    .hero-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 14px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat b {
+      display: block;
+      font-size: 24px;
+      letter-spacing: -0.03em;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .btn {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      padding: 12px 16px;
+      border-radius: 14px;
+      cursor: pointer;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+      transition: 0.18s ease;
+    }
+
+    .btn:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      border: 0;
+    }
+
+    .btn.small {
+      padding: 9px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+    }
+
+    .presets {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 10px 0 18px;
+      scrollbar-width: thin;
+    }
+
+    .preset {
+      white-space: nowrap;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      cursor: pointer;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+    }
+
+    .preset:hover {
+      color: var(--text);
+      border-color: var(--accent);
+    }
+
+    .filters {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+    }
+
+    .filter-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .filter-head h2 {
+      margin: 0;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .filter-note {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .filter-groups {
+      display: grid;
+      gap: 14px;
+    }
+
+    .filter-group {
+      border-top: 1px dashed var(--border);
+      padding-top: 12px;
+    }
+
+    .filter-group:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .group-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+      margin-bottom: 9px;
+      font-size: 14px;
+    }
+
+    .group-head h3 {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .group-head .count {
+      color: var(--muted);
+      font-weight: 650;
+      font-size: 12px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 13px;
+      transition: 0.16s ease;
+    }
+
+    .chip:hover {
+      color: var(--text);
+      border-color: var(--accent);
+    }
+
+    .chip.active {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 8px 20px rgba(91, 91, 214, 0.24);
+    }
+
+    .active-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 12px 14px;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+      min-height: 54px;
+    }
+
+    .active-label {
+      color: var(--muted);
+      font-weight: 750;
+      font-size: 13px;
+      margin-right: 4px;
+    }
+
+    .active-chip {
+      border: 1px solid rgba(91, 91, 214, 0.22);
+      background: rgba(91, 91, 214, 0.08);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .active-chip:hover {
+      background: rgba(91, 91, 214, 0.14);
+    }
+
+    .results-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin: 6px 0 16px;
+      flex-wrap: wrap;
+    }
+
+    .result-count {
+      color: var(--muted);
+      font-weight: 750;
+    }
+
+    .sort-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .sort-title {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    .sort-btn {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      cursor: pointer;
+      font-weight: 750;
+      font-size: 13px;
+      box-shadow: var(--shadow);
+    }
+
+    .sort-btn.active {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(345px, 1fr));
+      gap: 18px;
+      padding-bottom: 30px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.18s ease, border-color 0.18s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(91, 91, 214, 0.42);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+    }
+
+    .provider {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .type-badge {
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 850;
+      white-space: nowrap;
+      border: 1px solid transparent;
+    }
+
+    .type-local {
+      background: rgba(22, 163, 74, 0.12);
+      color: #166534;
+      border-color: rgba(22, 163, 74, 0.18);
+    }
+
+    .type-cloud {
+      background: rgba(37, 99, 235, 0.12);
+      color: #1d4ed8;
+      border-color: rgba(37, 99, 235, 0.18);
+    }
+
+    .type-both {
+      background: rgba(139, 92, 246, 0.14);
+      color: #6d28d9;
+      border-color: rgba(139, 92, 246, 0.20);
+    }
+
+    [data-theme="dark"] .type-local { color: #86efac; }
+    [data-theme="dark"] .type-cloud { color: #93c5fd; }
+    [data-theme="dark"] .type-both { color: #d8b4fe; }
+
+    .desc {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.58;
+      font-size: 14px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 12px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .tag.offline {
+      color: var(--green);
+      border-color: rgba(22, 163, 74, 0.22);
+      background: rgba(22, 163, 74, 0.08);
+    }
+
+    .spec-pills {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .pill {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 9px 10px;
+      min-width: 0;
+    }
+
+    .pill b {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 2px;
+    }
+
+    .pill span {
+      display: block;
+      font-size: 13px;
+      font-weight: 750;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .card-actions {
+      margin-top: auto;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .details {
+      border-top: 1px dashed var(--border);
+      padding-top: 12px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .detail-row {
+      display: grid;
+      grid-template-columns: 128px 1fr;
+      gap: 10px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .detail-row b {
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .detail-row div {
+      color: var(--text);
+      word-break: break-word;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 64px 22px;
+      border: 1px dashed var(--border);
+      border-radius: var(--radius-lg);
+      color: var(--muted);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .empty h3 {
+      margin: 0 0 8px;
+      color: var(--text);
+      font-size: 22px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    footer {
+      padding: 34px 0 60px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+      border-top: 1px solid var(--border);
+      margin-top: 20px;
+    }
+
+    footer strong {
+      color: var(--text);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(100% - 20px, 1280px);
+      }
+
+      .spec-pills {
+        grid-template-columns: 1fr;
+      }
+
+      .detail-row {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .card h3 {
+        font-size: 18px;
+      }
+
+      .lead {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#results">Skip to results</a>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#">
+        <div class="logo">AI</div>
+        <div>
+          Model Directory
+          <small>Button filters only</small>
+        </div>
+      </a>
+
+      <div class="top-actions">
+        <button class="icon-btn" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">🌙</button>
+        <button class="btn small" id="resetTop">Reset</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">📇 2026 Practical AI Stack Map</div>
+          <h1>
+            Find the right <span class="gradient-text">AI model</span><br />
+            using filter buttons
+          </h1>
+          <p class="lead">
+            A single-page directory for cloud and local AI models. No search bar.
+            Use button filters for deployment type, use case, device capacity, RAM, GPU,
+            CPU class, quantization, runtime, context length, license, offline support,
+            and expected speed.
+          </p>
+        </div>
+
+        <aside class="hero-card">
+          <h3>How this works</h3>
+          <ul>
+            <li>Tap <strong>Local</strong> to see hardware-dependent models.</li>
+            <li>Tap <strong>Cloud</strong> for API / free-tier services.</li>
+            <li>Combine multiple buttons inside a filter group.</li>
+            <li>Local-only filters hide automatically when Cloud is selected.</li>
+            <li>Use preset buttons for quick hardware scenarios.</li>
+          </ul>
+        </aside>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><b id="statTotal">0</b><span>Total models</span></div>
+        <div class="stat"><b id="statLocal">0</b><span>Local capable</span></div>
+        <div class="stat"><b id="statCloud">0</b><span>Cloud / API</span></div>
+        <div class="stat"><b id="statOffline">0</b><span>Offline capable</span></div>
+      </div>
+    </section>
+
+    <section class="presets" id="presets" aria-label="Quick presets"></section>
+
+    <section class="filters" aria-label="Filters">
+      <div class="filter-head">
+        <div>
+          <h2>Filter buttons</h2>
+          <div class="filter-note">All filtering is done with buttons. No search input is used.</div>
+        </div>
+        <button class="btn small" id="resetFilters">Reset all</button>
+      </div>
+
+      <div class="filter-groups" id="filterGroups"></div>
+    </section>
+
+    <section class="active-filters" id="activeFilters" aria-label="Active filters"></section>
+
+    <section id="results">
+      <div class="results-bar">
+        <div class="result-count" id="count">0 models</div>
+
+        <div class="sort-wrap">
+          <span class="sort-title">Sort</span>
+          <div class="chips" id="sortButtons"></div>
+        </div>
+      </div>
+
+      <div class="grid" id="grid"></div>
+
+      <div class="empty hidden" id="empty">
+        <h3>No models match these filter buttons</h3>
+        <p>Try removing one filter, switching deployment type, or resetting all filters.</p>
+        <button class="btn primary" id="emptyReset">Reset filters</button>
+      </div>
+    </section>
+
+    <footer>
+      <strong>Disclaimer:</strong> RAM, VRAM, CPU, quantization, and speed estimates are practical 2026 ranges,
+      not universal hard minimums. Real usability depends on context length, KV cache, operating system, runtime overhead,
+      GPU offloading, backend, model implementation, and concurrent workloads. For local LLMs, always leave headroom beyond
+      the raw model file size.
+    </footer>
+  </main>
+
+  <script>
+    const LABEL = {
+      type: {
+        local: "Local",
+        cloud: "Cloud"
+      },
+      task: {
+        chat: "Chat",
+        reasoning: "Reasoning",
+        coding: "Coding",
+        math: "Math",
+        vision: "Vision",
+        image_generation: "Image generation",
+        image_editing: "Image editing",
+        audio_asr: "Speech-to-text",
+        tts: "Text-to-speech",
+        translation: "Translation",
+        embeddings: "Embeddings / RAG",
+        research: "Research",
+        agents: "Agents",
+        education: "Education",
+        documents: "Documents",
+        multimodal: "Multimodal",
+        tiny: "Tiny / low resource"
+      },
+      ram: {
+        "2-4": "2–4 GB",
+        "4-8": "4–8 GB",
+        "8-16": "8–16 GB",
+        "16-32": "16–32 GB",
+        "32-64": "32–64 GB",
+        "64+": "64 GB+",
+        "128+": "128 GB+"
+      },
+      gpu: {
+        none: "No GPU needed",
+        integrated: "Integrated GPU",
+        "4gb": "4 GB VRAM",
+        "6gb": "6 GB VRAM",
+        "8gb": "8 GB VRAM",
+        "12gb": "12 GB VRAM",
+        "16gb": "16 GB VRAM",
+        "24gb": "24 GB VRAM",
+        "48gb": "48 GB+ VRAM",
+        cuda: "CUDA",
+        rocm: "ROCm",
+        metal: "Metal",
+        vulkan: "Vulkan"
+      },
+      quant: {
+        q2: "Q2",
+        q3: "Q3",
+        q4_k_m: "Q4_K_M",
+        q5_k_m: "Q5_K_M",
+        q6_k: "Q6_K",
+        q8_0: "Q8_0",
+        fp8: "FP8",
+        fp16: "FP16 / BF16",
+        gguf: "GGUF",
+        int8: "INT8",
+        api: "API / managed"
+      },
+      cpu: {
+        basic: "Basic i3 / Ryzen 3",
+        mainstream: "i5 / Ryzen 5",
+        strong: "i7 / Ryzen 7",
+        high_end: "i9 / Ryzen 9",
+        server: "Threadripper / Xeon / EPYC",
+        apple_silicon: "Apple Silicon",
+        arm: "ARM",
+        avx2: "AVX2 CPU"
+      },
+      runtime: {
+        ollama: "Ollama",
+        lm_studio: "LM Studio",
+        llama_cpp: "llama.cpp",
+        comfyui: "ComfyUI",
+        api: "Cloud API",
+        huggingface: "Hugging Face",
+        python: "Python",
+        browser: "Browser / on-device",
+        vscode: "VS Code / editor plugin"
+      },
+      context: {
+        "4k": "4K",
+        "8k": "8K",
+        "16k": "16K",
+        "32k": "32K",
+        "128k": "128K",
+        "200k": "200K",
+        "1m": "1M"
+      },
+      speed: {
+        cpu_fast: "Fast on CPU",
+        cpu_usable: "Usable on CPU",
+        cpu_slow: "Slow on CPU",
+        gpu_recommended: "GPU recommended",
+        cloud_fast: "Cloud fast"
+      },
+      license: {
+        apache_2_0: "Apache-2.0",
+        mit: "MIT",
+        openrail: "OpenRAIL-M",
+        custom: "Custom / community",
+        closed: "Closed / proprietary",
+        free_tier: "Free tier"
+      }
+    };
+
+    const FILTER_GROUPS = [
+      {
+        id: "type",
+        title: "Deployment type",
+        field: null,
+        mode: "single",
+        localOnly: false,
+        options: [
+          { v: "all", l: "All" },
+          { v: "cloud", l: "Cloud model" },
+          { v: "local", l: "Local model" }
+        ]
+      },
+      {
+        id: "tasks",
+        title: "Use case / capability",
+        field: "tasks",
+        mode: "multi",
+        localOnly: false,
+        options: [
+          { v: "chat", l: LABEL.task.chat },
+          { v: "reasoning", l: LABEL.task.reasoning },
+          { v: "coding", l: LABEL.task.coding },
+          { v: "math", l: LABEL.task.math },
+          { v: "vision", l: LABEL.task.vision },
+          { v: "multimodal", l: LABEL.task.multimodal },
+          { v: "image_generation", l: LABEL.task.image_generation },
+          { v: "image_editing", l: LABEL.task.image_editing },
+          { v: "audio_asr", l: LABEL.task.audio_asr },
+          { v: "tts", l: LABEL.task.tts },
+          { v: "translation", l: LABEL.task.translation },
+          { v: "embeddings", l: LABEL.task.embeddings },
+          { v: "research", l: LABEL.task.research },
+          { v: "agents", l: LABEL.task.agents },
+          { v: "education", l: LABEL.task.education },
+          { v: "documents", l: LABEL.task.documents },
+          { v: "tiny", l: LABEL.task.tiny }
+        ]
+      },
+      {
+        id: "ram",
+        title: "Device capacity — system RAM",
+        field: "ramTiers",
+        mode: "multi",
+        localOnly: true,
+        options: [
+          { v: "2-4", l: LABEL.ram["2-4"] },
+          { v: "4-8", l: LABEL.ram["4-8"] },
+          { v: "8-16", l: LABEL.ram["8-16"] },
+          { v: "16-32", l: LABEL.ram["16-32"] },
+          { v: "32-64", l: LABEL.ram["32-64"] },
+          { v: "64+", l: LABEL.ram["64+"] },
+          { v: "128+", l: LABEL.ram["128+"] }
+        ]
+      },
+      {
+        id: "gpu",
+        title: "GPU / VRAM requirement",
+        field: "gpuTiers",
+        mode: "multi",
+        localOnly: true,
+        options: [
+          { v: "none", l: LABEL.gpu.none },
+          { v: "integrated", l: LABEL.gpu.integrated },
+          { v: "4gb", l: LABEL.gpu["4gb"] },
+          { v: "6gb", l: LABEL.gpu["6gb"] },
+          { v: "8gb", l: LABEL.gpu["8gb"] },
+          { v: "12gb", l: LABEL.gpu["12gb"] },
+          { v: "16gb", l: LABEL.gpu["16gb"] },
+          { v: "24gb", l: LABEL.gpu["24gb"] },
+          { v: "48gb", l: LABEL.gpu["48gb"] },
+          { v: "cuda", l: LABEL.gpu.cuda },
+          { v: "rocm", l: LABEL.gpu.rocm },
+          { v: "metal", l: LABEL.gpu.metal },
+          { v: "vulkan", l: LABEL.gpu.vulkan }
+        ]
+      },
+      {
+        id: "quant",
+        title: "Quantization / precision",
+        field: "quantizations",
+        mode: "multi",
+        localOnly: true,
+        options: [
+          { v: "q2", l: LABEL.quant.q2 },
+          { v: "q3", l: LABEL.quant.q3 },
+          { v: "q4_k_m", l: LABEL.quant.q4_k_m },
+          { v: "q5_k_m", l: LABEL.quant.q5_k_m },
+          { v: "q6_k", l: LABEL.quant.q6_k },
+          { v: "q8_0", l: LABEL.quant.q8_0 },
+          { v: "fp8", l: LABEL.quant.fp8 },
+          { v: "fp16", l: LABEL.quant.fp16 },
+          { v: "gguf", l: LABEL.quant.gguf },
+          { v: "int8", l: LABEL.quant.int8 },
+          { v: "api", l: LABEL.quant.api }
+        ]
+      },
+      {
+        id: "cpu",
+        title: "Required CPU class",
+        field: "cpuTiers",
+        mode: "multi",
+        localOnly: true,
+        options: [
+          { v: "basic", l: LABEL.cpu.basic },
+          { v: "mainstream", l: LABEL.cpu.mainstream },
+          { v: "strong", l: LABEL.cpu.strong },
+          { v: "high_end", l: LABEL.cpu.high_end },
+          { v: "server", l: LABEL.cpu.server },
+          { v: "apple_silicon", l: LABEL.cpu.apple_silicon },
+          { v: "arm", l: LABEL.cpu.arm },
+          { v: "avx2", l: LABEL.cpu.avx2 }
+        ]
+      },
+      {
+        id: "runtime",
+        title: "Runtime / access",
+        field: "runtimes",
+        mode: "multi",
+        localOnly: false,
+        options: [
+          { v: "ollama", l: LABEL.runtime.ollama },
+          { v: "lm_studio", l: LABEL.runtime.lm_studio },
+          { v: "llama_cpp", l: LABEL.runtime.llama_cpp },
+          { v: "comfyui", l: LABEL.runtime.comfyui },
+          { v: "api", l: LABEL.runtime.api },
+          { v: "huggingface", l: LABEL.runtime.huggingface },
+          { v: "python", l: LABEL.runtime.python },
+          { v: "browser", l: LABEL.runtime.browser },
+          { v: "vscode", l: LABEL.runtime.vscode }
+        ]
+      },
+      {
+        id: "context",
+        title: "Context window",
+        field: "contextTiers",
+        mode: "multi",
+        localOnly: false,
+        options: [
+          { v: "4k", l: LABEL.context["4k"] },
+          { v: "8k", l: LABEL.context["8k"] },
+          { v: "16k", l: LABEL.context["16k"] },
+          { v: "32k", l: LABEL.context["32k"] },
+          { v: "128k", l: LABEL.context["128k"] },
+          { v: "200k", l: LABEL.context["200k"] },
+          { v: "1m", l: LABEL.context["1m"] }
+        ]
+      },
+      {
+        id: "speed",
+        title: "Expected speed",
+        field: "speedTags",
+        mode: "multi",
+        localOnly: false,
+        options: [
+          { v: "cpu_fast", l: LABEL.speed.cpu_fast },
+          { v: "cpu_usable", l: LABEL.speed.cpu_usable },
+          { v: "cpu_slow", l: LABEL.speed.cpu_slow },
+          { v: "gpu_recommended", l: LABEL.speed.gpu_recommended },
+          { v: "cloud_fast", l: LABEL.speed.cloud_fast }
+        ]
+      },
+      {
+        id: "license",
+        title: "License / access type",
+        field: "licenses",
+        mode: "multi",
+        localOnly: false,
+        options: [
+          { v: "apache_2_0", l: LABEL.license.apache_2_0 },
+          { v: "mit", l: LABEL.license.mit },
+          { v: "openrail", l: LABEL.license.openrail },
+          { v: "custom", l: LABEL.license.custom },
+          { v: "closed", l: LABEL.license.closed },
+          { v: "free_tier", l: LABEL.license.free_tier }
+        ]
+      },
+      {
+        id: "offline",
+        title: "Offline mode",
+        field: null,
+        mode: "single",
+        localOnly: false,
+        options: [
+          { v: "all", l: "Any" },
+          { v: "yes", l: "Offline capable" },
+          { v: "no", l: "Online only" }
+        ]
+      }
+    ];
+
+    const SORT_OPTIONS = [
+      { v: "featured", l: "Featured" },
+      { v: "name", l: "A–Z" },
+      { v: "size_asc", l: "Smallest" },
+      { v: "size_desc", l: "Largest" },
+      { v: "context_desc", l: "Longest context" }
+    ];
+
+    const MODELS = [
+      {
+        id: "qwen3-0-6b",
+        name: "Qwen3 0.6B",
+        provider: "Alibaba / Qwen",
+        types: ["local"],
+        tasks: ["chat", "education", "tiny"],
+        params: "0.6B",
+        paramB: 0.6,
+        context: "Up to 32K",
+        contextMaxK: 32,
+        contextTiers: ["32k"],
+        quantizations: ["q2", "q3", "q4_k_m", "q5_k_m", "q8_0"],
+        ramTiers: ["2-4", "4-8"],
+        gpuTiers: ["none", "integrated", "4gb"],
+        cpuTiers: ["basic", "mainstream", "arm", "apple_silicon"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp"],
+        licenses: ["apache_2_0"],
+        offline: true,
+        speedTags: ["cpu_fast"],
+        desc: "Ultra-small Qwen model for experiments, simple chat, classification, and very low RAM devices.",
+        bestFor: ["2–4 GB devices", "basic text completion", "offline experiments"],
+        order: 1
+      },
+      {
+        id: "gemma3-270m",
+        name: "Gemma 3 270M",
+        provider: "Google / Gemma",
+        types: ["local"],
+        tasks: ["chat", "education", "tiny"],
+        params: "270M",
+        paramB: 0.27,
+        context: "Small context",
+        contextMaxK: 8,
+        contextTiers: ["4k", "8k"],
+        quantizations: ["q4_k_m", "q8_0", "int8"],
+        ramTiers: ["2-4", "4-8"],
+        gpuTiers: ["none", "integrated"],
+        cpuTiers: ["basic", "arm", "apple_silicon"],
+        runtimes: ["llama_cpp", "huggingface", "python"],
+        licenses: ["custom"],
+        offline: true,
+        speedTags: ["cpu_fast"],
+        desc: "Tiny Gemma variant for extreme low-resource experimentation where larger models cannot fit.",
+        bestFor: ["very small devices", "prototype chat", "edge experiments"],
+        order: 2
+      },
+      {
+        id: "gemma3-1b",
+        name: "Gemma 3 1B",
+        provider: "Google / Gemma",
+        types: ["local"],
+        tasks: ["chat", "education", "tiny", "documents"],
+        params: "1B",
+        paramB: 1,
+        context: "8K–32K",
+        contextMaxK: 32,
+        contextTiers: ["8k", "32k"],
+        quantizations: ["q4_k_m", "q5_k_m", "q8_0"],
+        ramTiers: ["4-8", "8-16"],
+        gpuTiers: ["none", "integrated", "4gb"],
+        cpuTiers: ["basic", "mainstream", "arm", "apple_silicon"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp", "huggingface"],
+        licenses: ["custom"],
+        offline: true,
+        speedTags: ["cpu_fast", "cpu_usable"],
+        desc: "Small but practical Gemma model for basic chat, rewriting, short answers, and low-RAM laptops.",
+        bestFor: ["4 GB RAM", "simple chatbot", "student experiments"],
+        order: 3
+      },
+      {
+        id: "qwen25-1-5b",
+        name: "Qwen2.5 1.5B",
+        provider: "Alibaba / Qwen",
+        types: ["local"],
+        tasks: ["chat", "education", "translation", "tiny"],
+        params: "1.5B",
+        paramB: 1.5,
+        context: "16K–32K",
+        contextMaxK: 32,
+        contextTiers: ["16k", "32k"],
+        quantizations: ["q3", "q4_k_m", "q5_k_m", "q8_0"],
+        ramTiers: ["4-8", "8-16"],
+        gpuTiers: ["none", "integrated", "4gb"],
+        cpuTiers: ["basic", "mainstream", "arm", "apple_silicon"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp"],
+        licenses: ["apache_2_0"],
+        offline: true,
+        speedTags: ["cpu_fast", "cpu_usable"],
+        desc: "Lightweight Qwen model for basic assistant tasks, translation, and low-resource chat.",
+        bestFor: ["4–8 GB RAM", "multilingual basics", "offline chat"],
+        order: 4
+      },
+      {
+        id: "qwen25-coder-1-5b",
+        name: "Qwen2.5-Coder 1.5B",
+        provider: "Alibaba / Qwen",
+        types: ["local"],
+        tasks: ["coding", "education", "tiny"],
+        params: "1.5B",
+        paramB: 1.5,
+        context: "16K–32K",
+        contextMaxK: 32,
+        contextTiers: ["16k", "32k"],
+        quantizations: ["q4_k_m", "q5_k_m", "q8_0"],
+        ramTiers: ["4-8", "8-16"],
+        gpuTiers: ["none", "integrated", "4gb"],
+        cpuTiers: ["basic", "mainstream", "arm"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp", "vscode"],
+        licenses: ["apache_2_0"],
+        offline: true,
+        speedTags: ["cpu_fast", "cpu_usable"],
+        desc: "Tiny code-specialized model for simple completions, scripts, and learning programming basics.",
+        bestFor: ["low-end coding help", "single-file snippets", "4–8 GB RAM"],
+        order: 5
+      },
+      {
+        id: "gemma3-4b",
+        name: "Gemma 3 4B",
+        provider: "Google / Gemma",
+        types: ["local"],
+        tasks: ["chat", "vision", "multimodal", "education", "documents"],
+        params: "4B",
+        paramB: 4,
+        context: "32K+",
+        contextMaxK: 32,
+        contextTiers: ["32k"],
+        quantizations: ["q4_k_m", "q5_k_m", "q6_k", "q8_0"],
+        ramTiers: ["8-16", "16-32"],
+        gpuTiers: ["none", "integrated", "4gb", "6gb", "8gb", "metal"],
+        cpuTiers: ["mainstream", "strong", "apple_silicon", "arm"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp", "huggingface"],
+        licenses: ["custom"],
+        offline: true,
+        speedTags: ["cpu_usable", "gpu_recommended"],
+        desc: "Strong small multimodal model. One of the best low-RAM choices when image understanding is needed.",
+        bestFor: ["8 GB RAM laptops", "vision + chat", "local document/image Q&A"],
+        order: 6
+      },
+      {
+        id: "qwen3-4b",
+        name: "Qwen3 4B",
+        provider: "Alibaba / Qwen",
+        types: ["local"],
+        tasks: ["chat", "reasoning", "education", "documents", "translation"],
+        params: "4B",
+        paramB: 4,
+        context: "32K+",
+        contextMaxK: 32,
+        contextTiers: ["32k"],
+        quantizations: ["q3", "q4_k_m", "q5_k_m", "q8_0"],
+        ramTiers: ["8-16", "16-32"],
+        gpuTiers: ["none", "integrated", "4gb", "6gb", "8gb"],
+        cpuTiers: ["mainstream", "strong", "apple_silicon", "arm", "avx2"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp"],
+        licenses: ["apache_2_0"],
+        offline: true,
+        speedTags: ["cpu_usable", "gpu_recommended"],
+        desc: "Balanced small general model for chat, reasoning, study help, and multilingual tasks on modest hardware.",
+        bestFor: ["8 GB RAM", "general local assistant", "offline study"],
+        order: 7
+      },
+      {
+        id: "phi4-mini",
+        name: "Phi-4-mini 3.8B",
+        provider: "Microsoft / Phi",
+        types: ["local"],
+        tasks: ["reasoning", "math", "chat", "coding", "education"],
+        params: "3.8B",
+        paramB: 3.8,
+        context: "16K",
+        contextMaxK: 16,
+        contextTiers: ["16k"],
+        quantizations: ["q4_k_m", "q5_k_m", "q6_k", "q8_0"],
+        ramTiers: ["8-16", "16-32"],
+        gpuTiers: ["none", "integrated", "4gb", "6gb", "8gb"],
+        cpuTiers: ["mainstream", "strong", "apple_silicon", "avx2"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp", "huggingface"],
+        licenses: ["mit"],
+        offline: true,
+        speedTags: ["cpu_usable", "gpu_recommended"],
+        desc: "Small reasoning-focused model with strong math/logic performance for its size.",
+        bestFor: ["low-resource reasoning", "math help", "16 GB RAM laptops"],
+        order: 8
+      },
+      {
+        id: "llama32-3b",
+        name: "Llama 3.2 3B",
+        provider: "Meta / Llama",
+        types: ["local"],
+        tasks: ["chat", "education", "documents", "tiny"],
+        params: "3B",
+        paramB: 3,
+        context: "128K",
+        contextMaxK: 128,
+        contextTiers: ["128k"],
+        quantizations: ["q3", "q4_k_m", "q5_k_m", "q8_0"],
+        ramTiers: ["8-16", "16-32"],
+        gpuTiers: ["none", "integrated", "4gb", "6gb", "8gb"],
+        cpuTiers: ["mainstream", "strong", "apple_silicon", "arm"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp"],
+        licenses: ["custom"],
+        offline: true,
+        speedTags: ["cpu_usable"],
+        desc: "Compact Llama model for general chat and instruction following with a large ecosystem.",
+        bestFor: ["general small chatbot", "Llama ecosystem", "8–16 GB RAM"],
+        order: 9
+      },
+      {
+        id: "gemma3n-e2b",
+        name: "Gemma 3n E2B",
+        provider: "Google / Gemma",
+        types: ["local"],
+        tasks: ["multimodal", "vision", "audio_asr", "education", "tiny"],
+        params: "Effective 2B class",
+        paramB: 2,
+        context: "Variable",
+        contextMaxK: 32,
+        contextTiers: ["32k"],
+        quantizations: ["q4_k_m", "q8_0", "int8"],
+        ramTiers: ["8-16", "16-32"],
+        gpuTiers: ["none", "integrated", "4gb", "6gb", "metal"],
+        cpuTiers: ["mainstream", "apple_silicon", "arm"],
+        runtimes: ["huggingface", "python", "lm_studio"],
+        licenses: ["custom"],
+        offline: true,
+        speedTags: ["cpu_usable", "gpu_recommended"],
+        desc: "Low-resource multimodal family designed for text, image, audio, and video input on constrained devices.",
+        bestFor: ["offline multimodal", "low RAM vision/audio", "experimental on-device AI"],
+        order: 10
+      },
+      {
+        id: "qwen25-coder-3b",
+        name: "Qwen2.5-Coder 3B",
+        provider: "Alibaba / Qwen",
+        types: ["local"],
+        tasks: ["coding", "agents", "education"],
+        params: "3B",
+        paramB: 3,
+        context: "32K",
+        contextMaxK: 32,
+        contextTiers: ["32k"],
+        quantizations: ["q4_k_m", "q5_k_m", "q8_0"],
+        ramTiers: ["8-16", "16-32"],
+        gpuTiers: ["none", "integrated", "4gb", "6gb", "8gb"],
+        cpuTiers: ["mainstream", "strong", "apple_silicon"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp", "vscode"],
+        licenses: ["apache_2_0"],
+        offline: true,
+        speedTags: ["cpu_usable"],
+        desc: "Small coding model for autocomplete, simple refactors, and local developer assistance.",
+        bestFor: ["8 GB coding", "VS Code local assistant", "small scripts"],
+        order: 11
+      },
+      {
+        id: "qwen3-8b",
+        name: "Qwen3 8B",
+        provider: "Alibaba / Qwen",
+        types: ["local"],
+        tasks: ["chat", "reasoning", "coding", "documents", "education", "research"],
+        params: "8B",
+        paramB: 8,
+        context: "32K–128K",
+        contextMaxK: 128,
+        contextTiers: ["32k", "128k"],
+        quantizations: ["q3", "q4_k_m", "q5_k_m", "q6_k", "q8_0"],
+        ramTiers: ["8-16", "16-32"],
+        gpuTiers: ["none", "integrated", "6gb", "8gb", "12gb", "metal"],
+        cpuTiers: ["mainstream", "strong", "high_end", "apple_silicon", "avx2"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp"],
+        licenses: ["apache_2_0"],
+        offline: true,
+        speedTags: ["cpu_usable", "gpu_recommended"],
+        desc: "Excellent all-round local model for chat, reasoning, coding, documents, and RAG on 12–16 GB systems.",
+        bestFor: ["16 GB sweet spot", "general workhorse", "local RAG"],
+        order: 12
+      },
+      {
+        id: "deepseek-r1-distill-qwen-7b",
+        name: "DeepSeek-R1-Distill-Qwen 7B",
+        provider: "DeepSeek / Qwen distill",
+        types: ["local"],
+        tasks: ["reasoning", "math", "coding", "education"],
+        params: "7B",
+        paramB: 7,
+        context: "32K+",
+        contextMaxK: 32,
+        contextTiers: ["32k"],
+        quantizations: ["q4_k_m", "q5_k_m", "q6_k", "q8_0"],
+        ramTiers: ["8-16", "16-32"],
+        gpuTiers: ["none", "integrated", "6gb", "8gb", "12gb"],
+        cpuTiers: ["mainstream", "strong", "apple_silicon", "avx2"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp"],
+        licenses: ["mit"],
+        offline: true,
+        speedTags: ["cpu_usable", "gpu_recommended"],
+        desc: "Reasoning-distilled model for math, logic, and step-by-step problem solving at small scale.",
+        bestFor: ["local reasoning", "math tutoring", "12–16 GB RAM"],
+        order: 13
+      },
+      {
+        id: "qwen25-coder-7b",
+        name: "Qwen2.5-Coder 7B",
+        provider: "Alibaba / Qwen",
+        types: ["local"],
+        tasks: ["coding", "agents", "math", "documents"],
+        params: "7B",
+        paramB: 7,
+        context: "32K–128K",
+        contextMaxK: 128,
+        contextTiers: ["32k", "128k"],
+        quantizations: ["q4_k_m", "q5_k_m", "q6_k", "q8_0"],
+        ramTiers: ["8-16", "16-32"],
+        gpuTiers: ["none", "6gb", "8gb", "12gb", "cuda", "metal"],
+        cpuTiers: ["mainstream", "strong", "apple_silicon", "avx2"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp", "vscode"],
+        licenses: ["apache_2_0"],
+        offline: true,
+        speedTags: ["cpu_usable", "gpu_recommended"],
+        desc: "Strong local coding assistant for single-file tasks, completions, debugging, and short refactors.",
+        bestFor: ["8–16 GB coding", "VS Code + Ollama", "offline developer help"],
+        order: 14
+      },
+      {
+        id: "llama31-8b",
+        name: "Llama 3.1 8B",
+        provider: "Meta / Llama",
+        types: ["local"],
+        tasks: ["chat", "reasoning", "documents", "education"],
+        params: "8B",
+        paramB: 8,
+        context: "128K",
+        contextMaxK: 128,
+        contextTiers: ["128k"],
+        quantizations: ["q4_k_m", "q5_k_m", "q6_k", "q8_0"],
+        ramTiers: ["8-16", "16-32"],
+        gpuTiers: ["none", "6gb", "8gb", "12gb", "metal"],
+        cpuTiers: ["mainstream", "strong", "apple_silicon", "avx2"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp"],
+        licenses: ["custom"],
+        offline: true,
+        speedTags: ["cpu_usable"],
+        desc: "Popular general-purpose 8B model with a huge ecosystem of fine-tunes and tools.",
+        bestFor: ["mainstream chat", "Llama ecosystem", "8–16 GB RAM"],
+        order: 15
+      },
+      {
+        id: "mistral-7b",
+        name: "Mistral 7B",
+        provider: "Mistral AI",
+        types: ["local"],
+        tasks: ["chat", "reasoning", "coding", "documents"],
+        params: "7B",
+        paramB: 7,
+        context: "32K",
+        contextMaxK: 32,
+        contextTiers: ["32k"],
+        quantizations: ["q4_k_m", "q5_k_m", "q6_k", "q8_0"],
+        ramTiers: ["8-16", "16-32"],
+        gpuTiers: ["none", "6gb", "8gb", "12gb"],
+        cpuTiers: ["mainstream", "strong", "avx2"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp"],
+        licenses: ["apache_2_0"],
+        offline: true,
+        speedTags: ["cpu_usable"],
+        desc: "Efficient 7B model that remains a practical baseline for local chat and instruction following.",
+        bestFor: ["lightweight chat", "older GPUs", "8 GB VRAM systems"],
+        order: 16
+      },
+      {
+        id: "gemma2-9b",
+        name: "Gemma 2 9B",
+        provider: "Google / Gemma",
+        types: ["local"],
+        tasks: ["chat", "reasoning", "documents", "education"],
+        params: "9B",
+        paramB: 9,
+        context: "8K",
+        contextMaxK: 8,
+        contextTiers: ["8k"],
+        quantizations: ["q4_k_m", "q5_k_m", "q6_k", "q8_0"],
+        ramTiers: ["8-16", "16-32"],
+        gpuTiers: ["none", "8gb", "12gb", "metal"],
+        cpuTiers: ["mainstream", "strong", "apple_silicon"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp", "huggingface"],
+        licenses: ["custom"],
+        offline: true,
+        speedTags: ["cpu_usable", "gpu_recommended"],
+        desc: "Analytical 9B model with strong reasoning for its size, though context length is more limited.",
+        bestFor: ["analysis", "short documents", "16 GB RAM"],
+        order: 17
+      },
+      {
+        id: "qwen3-14b",
+        name: "Qwen3 14B",
+        provider: "Alibaba / Qwen",
+        types: ["local"],
+        tasks: ["chat", "reasoning", "coding", "documents", "research", "education"],
+        params: "14B",
+        paramB: 14,
+        context: "128K",
+        contextMaxK: 128,
+        contextTiers: ["128k"],
+        quantizations: ["q3", "q4_k_m", "q5_k_m", "q6_k", "q8_0"],
+        ramTiers: ["16-32", "32-64"],
+        gpuTiers: ["none", "8gb", "12gb", "16gb", "24gb", "metal", "cuda"],
+        cpuTiers: ["strong", "high_end", "apple_silicon", "avx2"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp"],
+        licenses: ["apache_2_0"],
+        offline: true,
+        speedTags: ["cpu_usable", "cpu_slow", "gpu_recommended"],
+        desc: "Major step up from 8B models for reasoning, long documents, coding, and higher-quality chat.",
+        bestFor: ["16–32 GB RAM", "serious local assistant", "long-context RAG"],
+        order: 18
+      },
+      {
+        id: "deepseek-r1-distill-qwen-14b",
+        name: "DeepSeek-R1-Distill-Qwen 14B",
+        provider: "DeepSeek / Qwen distill",
+        types: ["local"],
+        tasks: ["reasoning", "math", "coding", "agents"],
+        params: "14B",
+        paramB: 14,
+        context: "32K+",
+        contextMaxK: 32,
+        contextTiers: ["32k"],
+        quantizations: ["q4_k_m", "q5_k_m", "q6_k", "q8_0"],
+        ramTiers: ["16-32", "32-64"],
+        gpuTiers: ["8gb", "12gb", "16gb", "24gb", "cuda", "metal"],
+        cpuTiers: ["strong", "high_end", "apple_silicon"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp"],
+        licenses: ["mit"],
+        offline: true,
+        speedTags: ["cpu_slow", "gpu_recommended"],
+        desc: "Strong reasoning distill for complex problem solving, math, and agentic workflows.",
+        bestFor: ["local reasoning", "math-heavy tasks", "16–32 GB RAM"],
+        order: 19
+      },
+      {
+        id: "qwen25-coder-14b",
+        name: "Qwen2.5-Coder 14B",
+        provider: "Alibaba / Qwen",
+        types: ["local"],
+        tasks: ["coding", "agents", "math", "documents"],
+        params: "14B",
+        paramB: 14,
+        context: "128K",
+        contextMaxK: 128,
+        contextTiers: ["128k"],
+        quantizations: ["q4_k_m", "q5_k_m", "q6_k", "q8_0"],
+        ramTiers: ["16-32", "32-64"],
+        gpuTiers: ["8gb", "12gb", "16gb", "24gb", "cuda", "metal"],
+        cpuTiers: ["strong", "high_end", "apple_silicon"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp", "vscode"],
+        licenses: ["apache_2_0"],
+        offline: true,
+        speedTags: ["cpu_slow", "gpu_recommended"],
+        desc: "Flagship mid-size local coding model for multi-file reasoning, debugging, and agent-style workflows.",
+        bestFor: ["16 GB+ coding", "local agentic coding", "complex refactors"],
+        order: 20
+      },
+      {
+        id: "phi4-14b",
+        name: "Phi-4 14B",
+        provider: "Microsoft / Phi",
+        types: ["local"],
+        tasks: ["reasoning", "math", "coding", "education"],
+        params: "14.7B",
+        paramB: 14.7,
+        context: "16K",
+        contextMaxK: 16,
+        contextTiers: ["16k"],
+        quantizations: ["q4_k_m", "q5_k_m", "q6_k", "q8_0", "fp16"],
+        ramTiers: ["16-32", "32-64"],
+        gpuTiers: ["8gb", "12gb", "16gb", "24gb", "cuda", "metal"],
+        cpuTiers: ["strong", "high_end", "apple_silicon"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp", "huggingface"],
+        licenses: ["mit"],
+        offline: true,
+        speedTags: ["cpu_slow", "gpu_recommended"],
+        desc: "Curated-training reasoning model with strong math/logic performance; Q4 makes it much more practical.",
+        bestFor: ["logical reasoning", "math benchmarks", "16 GB RAM with Q4"],
+        order: 21
+      },
+      {
+        id: "gemma3-12b",
+        name: "Gemma 3 12B",
+        provider: "Google / Gemma",
+        types: ["local"],
+        tasks: ["chat", "vision", "multimodal", "documents", "education"],
+        params: "12B",
+        paramB: 12,
+        context: "32K+",
+        contextMaxK: 32,
+        contextTiers: ["32k"],
+        quantizations: ["q4_k_m", "q5_k_m", "q6_k", "q8_0"],
+        ramTiers: ["16-32", "32-64"],
+        gpuTiers: ["8gb", "12gb", "16gb", "metal", "cuda"],
+        cpuTiers: ["strong", "high_end", "apple_silicon"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp", "huggingface"],
+        licenses: ["custom"],
+        offline: true,
+        speedTags: ["cpu_slow", "gpu_recommended"],
+        desc: "Multimodal Gemma model for image understanding and general assistant tasks on stronger local hardware.",
+        bestFor: ["local vision", "document images", "16–32 GB RAM"],
+        order: 22
+      },
+      {
+        id: "solar-10-7b",
+        name: "Solar 10.7B",
+        provider: "Upstage / Solar",
+        types: ["local"],
+        tasks: ["chat", "documents", "reasoning", "research"],
+        params: "10.7B",
+        paramB: 10.7,
+        context: "Long-context variants",
+        contextMaxK: 128,
+        contextTiers: ["128k"],
+        quantizations: ["q4_k_m", "q5_k_m", "q6_k"],
+        ramTiers: ["16-32", "32-64"],
+        gpuTiers: ["8gb", "12gb", "16gb", "cuda"],
+        cpuTiers: ["strong", "high_end"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp"],
+        licenses: ["custom"],
+        offline: true,
+        speedTags: ["cpu_slow", "gpu_recommended"],
+        desc: "Known for long-form analysis and deep-dive conversational tasks where context handling matters.",
+        bestFor: ["long analysis", "research chat", "16 GB+ RAM"],
+        order: 23
+      },
+      {
+        id: "codestral-22b",
+        name: "Codestral 22B",
+        provider: "Mistral AI",
+        types: ["local"],
+        tasks: ["coding", "agents", "documents"],
+        params: "22B",
+        paramB: 22,
+        context: "32K+",
+        contextMaxK: 32,
+        contextTiers: ["32k"],
+        quantizations: ["q4_k_m", "q5_k_m", "q6_k", "q8_0"],
+        ramTiers: ["16-32", "32-64"],
+        gpuTiers: ["12gb", "16gb", "24gb", "cuda", "metal"],
+        cpuTiers: ["high_end", "server", "apple_silicon"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp", "vscode"],
+        licenses: ["custom"],
+        offline: true,
+        speedTags: ["cpu_slow", "gpu_recommended"],
+        desc: "Powerful coding model for scaffolding, refactoring, and larger repository-aware tasks.",
+        bestFor: ["24 GB VRAM", "serious local coding", "multi-file workflows"],
+        order: 24
+      },
+      {
+        id: "qwen3-30b-a3b",
+        name: "Qwen3 30B-A3B",
+        provider: "Alibaba / Qwen MoE",
+        types: ["local"],
+        tasks: ["chat", "reasoning", "coding", "agents", "documents", "research"],
+        params: "30B total / ~3B active",
+        paramB: 30,
+        context: "128K",
+        contextMaxK: 128,
+        contextTiers: ["128k"],
+        quantizations: ["q3", "q4_k_m", "q5_k_m", "q6_k", "q8_0"],
+        ramTiers: ["16-32", "32-64", "64+"],
+        gpuTiers: ["12gb", "16gb", "24gb", "48gb", "cuda", "metal"],
+        cpuTiers: ["strong", "high_end", "server", "apple_silicon"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp"],
+        licenses: ["apache_2_0"],
+        offline: true,
+        speedTags: ["cpu_slow", "gpu_recommended"],
+        desc: "Mixture-of-Experts model: large total capacity with small active parameters, attractive for local inference.",
+        bestFor: ["32 GB RAM", "MoE efficiency", "general + reasoning + coding"],
+        order: 25
+      },
+      {
+        id: "mistral-small-24b",
+        name: "Mistral Small 24B",
+        provider: "Mistral AI",
+        types: ["local"],
+        tasks: ["chat", "vision", "multimodal", "documents", "research"],
+        params: "24B",
+        paramB: 24,
+        context: "128K",
+        contextMaxK: 128,
+        contextTiers: ["128k"],
+        quantizations: ["q4_k_m", "q5_k_m", "q6_k", "q8_0"],
+        ramTiers: ["16-32", "32-64"],
+        gpuTiers: ["12gb", "16gb", "24gb", "metal", "cuda"],
+        cpuTiers: ["high_end", "server", "apple_silicon"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp", "huggingface"],
+        licenses: ["apache_2_0"],
+        offline: true,
+        speedTags: ["cpu_slow", "gpu_recommended"],
+        desc: "Strong medium-size multimodal assistant with vision, long context, and multilingual support.",
+        bestFor: ["32 GB unified memory", "local vision + chat", "document analysis"],
+        order: 26
+      },
+      {
+        id: "gemma3-27b",
+        name: "Gemma 3 27B",
+        provider: "Google / Gemma",
+        types: ["local"],
+        tasks: ["chat", "vision", "multimodal", "documents", "reasoning"],
+        params: "27B",
+        paramB: 27,
+        context: "32K+",
+        contextMaxK: 32,
+        contextTiers: ["32k"],
+        quantizations: ["q4_k_m", "q5_k_m", "q6_k", "q8_0"],
+        ramTiers: ["32-64", "64+"],
+        gpuTiers: ["16gb", "24gb", "48gb", "metal", "cuda"],
+        cpuTiers: ["high_end", "server", "apple_silicon"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp", "huggingface"],
+        licenses: ["custom"],
+        offline: true,
+        speedTags: ["cpu_slow", "gpu_recommended"],
+        desc: "Higher-end Gemma multimodal model for stronger vision and general reasoning on workstation-class hardware.",
+        bestFor: ["32–64 GB RAM", "local vision", "high-quality multimodal"],
+        order: 27
+      },
+      {
+        id: "qwen25-coder-32b",
+        name: "Qwen2.5-Coder 32B",
+        provider: "Alibaba / Qwen",
+        types: ["local"],
+        tasks: ["coding", "agents", "math", "documents"],
+        params: "32B",
+        paramB: 32,
+        context: "128K",
+        contextMaxK: 128,
+        contextTiers: ["128k"],
+        quantizations: ["q3", "q4_k_m", "q5_k_m", "q6_k", "q8_0"],
+        ramTiers: ["32-64", "64+"],
+        gpuTiers: ["16gb", "24gb", "48gb", "cuda", "metal"],
+        cpuTiers: ["high_end", "server", "apple_silicon"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp", "vscode"],
+        licenses: ["apache_2_0"],
+        offline: true,
+        speedTags: ["cpu_slow", "gpu_recommended"],
+        desc: "High-end local coding model for complex debugging, repository-scale reasoning, and agentic workflows.",
+        bestFor: ["32 GB+ RAM", "professional coding", "multi-file projects"],
+        order: 28
+      },
+      {
+        id: "deepseek-r1-distill-qwen-32b",
+        name: "DeepSeek-R1-Distill-Qwen 32B",
+        provider: "DeepSeek / Qwen distill",
+        types: ["local"],
+        tasks: ["reasoning", "math", "coding", "agents", "research"],
+        params: "32B",
+        paramB: 32,
+        context: "32K+",
+        contextMaxK: 32,
+        contextTiers: ["32k"],
+        quantizations: ["q3", "q4_k_m", "q5_k_m", "q6_k", "q8_0"],
+        ramTiers: ["32-64", "64+"],
+        gpuTiers: ["16gb", "24gb", "48gb", "cuda", "metal"],
+        cpuTiers: ["high_end", "server", "apple_silicon"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp"],
+        licenses: ["mit"],
+        offline: true,
+        speedTags: ["cpu_slow", "gpu_recommended"],
+        desc: "Top-tier local reasoning model family for complex problem solving, math, and chain-of-thought tasks.",
+        bestFor: ["32 GB RAM minimum", "advanced reasoning", "local problem solving"],
+        order: 29
+      },
+      {
+        id: "qwen3-32b",
+        name: "Qwen3 32B",
+        provider: "Alibaba / Qwen",
+        types: ["local"],
+        tasks: ["chat", "reasoning", "coding", "documents", "research", "agents"],
+        params: "32B",
+        paramB: 32,
+        context: "128K",
+        contextMaxK: 128,
+        contextTiers: ["128k"],
+        quantizations: ["q3", "q4_k_m", "q5_k_m", "q6_k", "q8_0"],
+        ramTiers: ["32-64", "64+"],
+        gpuTiers: ["16gb", "24gb", "48gb", "cuda", "metal"],
+        cpuTiers: ["high_end", "server", "apple_silicon"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp"],
+        licenses: ["apache_2_0"],
+        offline: true,
+        speedTags: ["cpu_slow", "gpu_recommended"],
+        desc: "Dense high-capability Qwen model for users who want stronger all-around local performance.",
+        bestFor: ["32–64 GB RAM", "frontier-like local chat", "long documents"],
+        order: 30
+      },
+      {
+        id: "qwen3-coder-30b-a3b",
+        name: "Qwen3-Coder 30B-A3B",
+        provider: "Alibaba / Qwen",
+        types: ["local"],
+        tasks: ["coding", "agents", "math", "documents"],
+        params: "30B total / ~3B active",
+        paramB: 30,
+        context: "128K+",
+        contextMaxK: 128,
+        contextTiers: ["128k"],
+        quantizations: ["q4_k_m", "q5_k_m", "q6_k", "q8_0"],
+        ramTiers: ["32-64", "64+"],
+        gpuTiers: ["16gb", "24gb", "48gb", "cuda", "metal"],
+        cpuTiers: ["high_end", "server", "apple_silicon"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp", "vscode"],
+        licenses: ["apache_2_0"],
+        offline: true,
+        speedTags: ["cpu_slow", "gpu_recommended"],
+        desc: "MoE coding model aimed at agentic development workflows with better efficiency than dense 30B+ models.",
+        bestFor: ["local coding agents", "32 GB+ hardware", "long-context repo work"],
+        order: 31
+      },
+      {
+        id: "devstral-small-2",
+        name: "Devstral Small 2",
+        provider: "Mistral / Devstral",
+        types: ["local"],
+        tasks: ["coding", "agents", "documents"],
+        params: "~24B class",
+        paramB: 24,
+        context: "Long context",
+        contextMaxK: 128,
+        contextTiers: ["128k"],
+        quantizations: ["q4_k_m", "q5_k_m", "q6_k"],
+        ramTiers: ["32-64", "64+"],
+        gpuTiers: ["16gb", "24gb", "48gb", "cuda", "metal"],
+        cpuTiers: ["high_end", "server", "apple_silicon"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp", "vscode"],
+        licenses: ["custom"],
+        offline: true,
+        speedTags: ["cpu_slow", "gpu_recommended"],
+        desc: "Coding-focused model for debugging, repository understanding, and multi-file workflows.",
+        bestFor: ["24 GB VRAM", "local coding assistant", "complex debugging"],
+        order: 32
+      },
+      {
+        id: "nemotron-cascade-2-30b-a3b",
+        name: "Nemotron Cascade 2 30B-A3B",
+        provider: "NVIDIA / Nemotron",
+        types: ["local"],
+        tasks: ["chat", "reasoning", "agents", "documents"],
+        params: "30B total / ~3B active",
+        paramB: 30,
+        context: "Long context",
+        contextMaxK: 128,
+        contextTiers: ["128k"],
+        quantizations: ["q4_k_m", "q5_k_m", "q8_0"],
+        ramTiers: ["32-64", "64+"],
+        gpuTiers: ["16gb", "24gb", "48gb", "cuda"],
+        cpuTiers: ["high_end", "server", "apple_silicon"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp", "huggingface"],
+        licenses: ["custom"],
+        offline: true,
+        speedTags: ["cpu_slow", "gpu_recommended"],
+        desc: "MoE-style model family relevant for local reasoning and agent workflows on stronger hardware.",
+        bestFor: ["32 GB+ RAM", "MoE experimentation", "NVIDIA ecosystems"],
+        order: 33
+      },
+      {
+        id: "qwen35-35b-a3b",
+        name: "Qwen3.5 35B-A3B",
+        provider: "Alibaba / Qwen",
+        types: ["local"],
+        tasks: ["chat", "reasoning", "coding", "agents", "documents"],
+        params: "35B total / ~3B active",
+        paramB: 35,
+        context: "128K+",
+        contextMaxK: 128,
+        contextTiers: ["128k"],
+        quantizations: ["q4_k_m", "q5_k_m", "q6_k", "q8_0"],
+        ramTiers: ["32-64", "64+"],
+        gpuTiers: ["16gb", "24gb", "48gb", "cuda", "metal"],
+        cpuTiers: ["high_end", "server", "apple_silicon"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp"],
+        licenses: ["apache_2_0"],
+        offline: true,
+        speedTags: ["cpu_slow", "gpu_recommended"],
+        desc: "Large MoE model bringing cloud-adjacent capability to high-end local machines, especially Apple Silicon.",
+        bestFor: ["Mac 32 GB+", "frontier-like local AI", "agentic workflows"],
+        order: 34
+      },
+      {
+        id: "llama33-70b",
+        name: "Llama 3.3 70B",
+        provider: "Meta / Llama",
+        types: ["local"],
+        tasks: ["chat", "reasoning", "documents", "research", "agents"],
+        params: "70B",
+        paramB: 70,
+        context: "128K",
+        contextMaxK: 128,
+        contextTiers: ["128k"],
+        quantizations: ["q2", "q3", "q4_k_m", "q5_k_m", "q6_k", "q8_0"],
+        ramTiers: ["64+", "128+"],
+        gpuTiers: ["24gb", "48gb", "cuda", "metal"],
+        cpuTiers: ["server", "high_end", "apple_silicon"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp"],
+        licenses: ["custom"],
+        offline: true,
+        speedTags: ["cpu_slow", "gpu_recommended"],
+        desc: "70B-class local model for advanced chat, long-form writing, reasoning, and private knowledge bases.",
+        bestFor: ["64 GB RAM", "workstation local AI", "high-quality assistant"],
+        order: 35
+      },
+      {
+        id: "qwen3-coder-next-80b",
+        name: "Qwen3-Coder-Next 80B",
+        provider: "Alibaba / Qwen",
+        types: ["local"],
+        tasks: ["coding", "agents", "math", "documents", "research"],
+        params: "80B total / ~3B active",
+        paramB: 80,
+        context: "Very long context",
+        contextMaxK: 128,
+        contextTiers: ["128k"],
+        quantizations: ["q3", "q4_k_m", "q5_k_m", "q6_k"],
+        ramTiers: ["64+", "128+"],
+        gpuTiers: ["24gb", "48gb", "cuda", "metal"],
+        cpuTiers: ["server", "high_end", "apple_silicon"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp", "vscode"],
+        licenses: ["apache_2_0"],
+        offline: true,
+        speedTags: ["cpu_slow", "gpu_recommended"],
+        desc: "Cutting-edge MoE coding model approaching cloud-class development capability on high-end local hardware.",
+        bestFor: ["128 GB workstation", "agentic coding", "repository-scale tasks"],
+        order: 36
+      },
+      {
+        id: "north-mini-code-1-0",
+        name: "North Mini Code 1.0",
+        provider: "North / community",
+        types: ["local"],
+        tasks: ["coding", "agents", "math"],
+        params: "30B total / ~3B active",
+        paramB: 30,
+        context: "Long context",
+        contextMaxK: 128,
+        contextTiers: ["128k"],
+        quantizations: ["q4_k_m", "q5_k_m", "q6_k"],
+        ramTiers: ["32-64", "64+"],
+        gpuTiers: ["16gb", "24gb", "48gb", "cuda", "metal"],
+        cpuTiers: ["high_end", "server", "apple_silicon"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp"],
+        licenses: ["custom"],
+        offline: true,
+        speedTags: ["cpu_slow", "gpu_recommended"],
+        desc: "MoE coding-oriented model designed to deliver strong development performance with reduced active compute.",
+        bestFor: ["local coding MoE", "32 GB+ RAM", "agent workflows"],
+        order: 37
+      },
+      {
+        id: "gpt-oss-20b",
+        name: "GPT-OSS 20B",
+        provider: "OpenAI open-weight family",
+        types: ["local", "cloud"],
+        tasks: ["chat", "reasoning", "coding", "agents", "documents"],
+        params: "20B",
+        paramB: 20,
+        context: "Long context",
+        contextMaxK: 128,
+        contextTiers: ["128k"],
+        quantizations: ["q4_k_m", "q5_k_m", "q6_k", "q8_0", "fp16", "api"],
+        ramTiers: ["16-32", "32-64"],
+        gpuTiers: ["12gb", "16gb", "24gb", "cuda", "metal"],
+        cpuTiers: ["strong", "high_end", "apple_silicon"],
+        runtimes: ["ollama", "lm_studio", "llama_cpp", "api", "huggingface"],
+        licenses: ["apache_2_0", "free_tier"],
+        offline: true,
+        speedTags: ["cpu_slow", "gpu_recommended", "cloud_fast"],
+        desc: "Open-weight 20B model aimed at local/lower-latency use, with cloud/API deployment also possible.",
+        bestFor: ["hybrid local/cloud", "reasoning + coding", "16–32 GB local"],
+        order: 38
+      },
+      {
+        id: "gpt-oss-120b",
+        name: "GPT-OSS 120B",
+        provider: "OpenAI open-weight family",
+        types: ["local", "cloud"],
+        tasks: ["reasoning", "coding", "agents", "research", "documents"],
+        params: "117B total / ~5.1B active",
+        paramB: 120,
+        context: "Very long context",
+        contextMaxK: 128,
+        contextTiers: ["128k"],
+        quantizations: ["q3", "q4_k_m", "q5_k_m", "q6_k", "fp16", "api"],
+        ramTiers: ["64+", "128+"],
+        gpuTiers: ["24gb", "48gb", "cuda"],
+        cpuTiers: ["server", "high_end"],
+        runtimes: ["llama_cpp", "huggingface", "python", "api"],
+        licenses: ["apache_2_0", "free_tier"],
+        offline: true,
+        speedTags: ["cpu_slow", "gpu_recommended", "cloud_fast"],
+        desc: "Large MoE open-weight model for workstation-class local AI and advanced agentic/reasoning workloads.",
+        bestFor: ["128 GB RAM", "80 GB GPU-class setups", "large local agents"],
+        order: 39
+      },
+      {
+        id: "stable-diffusion-1-5",
+        name: "Stable Diffusion 1.5",
+        provider: "CompVis / Stability ecosystem",
+        types: ["local"],
+        tasks: ["image_generation", "image_editing"],
+        params: "~1B class",
+        paramB: 1,
+        context: "Not applicable",
+        contextMaxK: 0,
+        contextTiers: [],
+        quantizations: ["fp16", "int8", "gguf"],
+        ramTiers: ["4-8", "8-16"],
+        gpuTiers: ["4gb", "6gb", "8gb", "cuda", "rocm", "metal"],
+        cpuTiers: ["mainstream", "strong"],
+        runtimes: ["comfyui", "huggingface", "python"],
+        licenses: ["openrail"],
+        offline: true,
+        speedTags: ["gpu_recommended", "cpu_slow"],
+        desc: "Lightweight image generation model with a massive ecosystem of fine-tunes, LoRAs, and ControlNet workflows.",
+        bestFor: ["4–6 GB VRAM", "low-end image generation", "community models"],
+        order: 40
+      },
+      {
+        id: "sdxl",
+        name: "Stable Diffusion XL",
+        provider: "Stability AI ecosystem",
+        types: ["local"],
+        tasks: ["image_generation", "image_editing"],
+        params: "~2.6B class",
+        paramB: 2.6,
+        context: "Not applicable",
+        contextMaxK: 0,
+        contextTiers: [],
+        quantizations: ["fp16", "int8", "gguf"],
+        ramTiers: ["8-16", "16-32"],
+        gpuTiers: ["6gb", "8gb", "12gb", "16gb", "cuda", "rocm", "metal"],
+        cpuTiers: ["mainstream", "strong"],
+        runtimes: ["comfyui", "huggingface", "python"],
+        licenses: ["openrail"],
+        offline: true,
+        speedTags: ["gpu_recommended", "cpu_slow"],
+        desc: "Higher-quality diffusion model with native 1024x1024 generation and strong community support.",
+        bestFor: ["8 GB VRAM", "1024 images", "local creative workflows"],
+        order: 41
+      },
+      {
+        id: "sd-3-5",
+        name: "Stable Diffusion 3.5",
+        provider: "Stability AI",
+        types: ["local"],
+        tasks: ["image_generation", "image_editing"],
+        params: "Larger diffusion family",
+        paramB: 8,
+        context: "Not applicable",
+        contextMaxK: 0,
+        contextTiers: [],
+        quantizations: ["fp16", "fp8", "gguf"],
+        ramTiers: ["16-32", "32-64"],
+        gpuTiers: ["8gb", "12gb", "16gb", "24gb", "cuda", "metal"],
+        cpuTiers: ["strong", "high_end"],
+        runtimes: ["comfyui", "huggingface", "python"],
+        licenses: ["openrail", "custom"],
+        offline: true,
+        speedTags: ["gpu_recommended", "cpu_slow"],
+        desc: "Newer Stable Diffusion generation with improved text rendering and coherence at higher VRAM cost.",
+        bestFor: ["12 GB+ VRAM", "better typography", "advanced local image workflows"],
+        order: 42
+      },
+      {
+        id: "flux-1-schnell",
+        name: "FLUX.1 Schnell",
+        provider: "Black Forest Labs",
+        types: ["local"],
+        tasks: ["image_generation"],
+        params: "12B",
+        paramB: 12,
+        context: "Not applicable",
+        contextMaxK: 0,
+        contextTiers: [],
+        quantizations: ["fp8", "fp16", "gguf"],
+        ramTiers: ["16-32", "32-64"],
+        gpuTiers: ["8gb", "12gb", "16gb", "24gb", "cuda", "metal"],
+        cpuTiers: ["strong", "high_end"],
+        runtimes: ["comfyui", "huggingface", "python"],
+        licenses: ["apache_2_0"],
+        offline: true,
+        speedTags: ["gpu_recommended", "cpu_slow"],
+        desc: "Speed-optimized FLUX variant capable of very few-step generation with strong composition quality.",
+        bestFor: ["8–12 GB VRAM quantized", "fast local image generation", "FLUX workflows"],
+        order: 43
+      },
+      {
+        id: "flux-1-dev",
+        name: "FLUX.1 Dev",
+        provider: "Black Forest Labs",
+        types: ["local"],
+        tasks: ["image_generation", "image_editing"],
+        params: "12B",
+        paramB: 12,
+        context: "Not applicable",
+        contextMaxK: 0,
+        contextTiers: [],
+        quantizations: ["fp8", "fp16", "gguf"],
+        ramTiers: ["16-32", "32-64"],
+        gpuTiers: ["12gb", "16gb", "24gb", "48gb", "cuda", "metal"],
+        cpuTiers: ["strong", "high_end"],
+        runtimes: ["comfyui", "huggingface", "python"],
+        licenses: ["custom"],
+        offline: true,
+        speedTags: ["gpu_recommended", "cpu_slow"],
+        desc: "Higher-quality FLUX variant using more diffusion steps; FP8 makes it practical on 12 GB+ GPUs.",
+        bestFor: ["12 GB VRAM FP8", "24 GB VRAM full precision", "premium local image quality"],
+        order: 44
+      },
+      {
+        id: "flux-2-dev",
+        name: "FLUX.2 Dev",
+        provider: "Black Forest Labs",
+        types: ["local"],
+        tasks: ["image_generation", "image_editing"],
+        params: "Next-gen FLUX",
+        paramB: 12,
+        context: "Not applicable",
+        contextMaxK: 0,
+        contextTiers: [],
+        quantizations: ["fp8", "fp16", "gguf"],
+        ramTiers: ["32-64", "64+"],
+        gpuTiers: ["16gb", "24gb", "48gb", "cuda", "metal"],
+        cpuTiers: ["high_end", "server"],
+        runtimes: ["comfyui", "huggingface", "python"],
+        licenses: ["custom"],
+        offline: true,
+        speedTags: ["gpu_recommended", "cpu_slow"],
+        desc: "Expected next-generation FLUX model with very high full-precision VRAM demands but quantized paths for access.",
+        bestFor: ["24–48 GB VRAM", "future high-end image generation", "quantized workstation workflows"],
+        order: 45
+      },
+      {
+        id: "whisper",
+        name: "OpenAI Whisper",
+        provider: "OpenAI / Hugging Face",
+        types: ["local", "cloud"],
+        tasks: ["audio_asr", "education", "documents"],
+        params: "39M–1.5B",
+        paramB: 0.15,
+        context: "Audio chunks",
+        contextMaxK: 0,
+        contextTiers: [],
+        quantizations: ["fp16", "int8", "api"],
+        ramTiers: ["4-8", "8-16"],
+        gpuTiers: ["none", "integrated", "4gb", "6gb", "cuda"],
+        cpuTiers: ["mainstream", "strong"],
+        runtimes: ["huggingface", "python", "api"],
+        licenses: ["mit", "free_tier"],
+        offline: true,
+        speedTags: ["cpu_usable", "gpu_recommended", "cloud_fast"],
+        desc: "Robust speech-to-text model family that can run locally or through hosted APIs.",
+        bestFor: ["offline transcription", "lecture notes", "multilingual ASR"],
+        order: 46
+      },
+      {
+        id: "marianmt",
+        name: "Helsinki-NLP MarianMT",
+        provider: "Helsinki-NLP / Hugging Face",
+        types: ["local", "cloud"],
+        tasks: ["translation", "education", "documents"],
+        params: "600M+ per pair",
+        paramB: 0.6,
+        context: "Sentence/document chunks",
+        contextMaxK: 0,
+        contextTiers: [],
+        quantizations: ["fp16", "int8", "api"],
+        ramTiers: ["4-8", "8-16"],
+        gpuTiers: ["none", "integrated", "4gb", "cuda"],
+        cpuTiers: ["mainstream", "strong"],
+        runtimes: ["huggingface", "python", "api"],
+        licenses: ["apache_2_0", "free_tier"],
+        offline: true,
+        speedTags: ["cpu_usable", "gpu_recommended", "cloud_fast"],
+        desc: "Open translation model family covering many language pairs and suitable for local/offline pipelines.",
+        bestFor: ["offline translation", "language pairs", "RAG/document translation"],
+        order: 47
+      },
+      {
+        id: "all-minilm-l6-v2",
+        name: "all-MiniLM-L6-v2",
+        provider: "sentence-transformers / Hugging Face",
+        types: ["local", "cloud"],
+        tasks: ["embeddings", "research", "documents", "education"],
+        params: "117M / 384-d",
+        paramB: 0.117,
+        context: "Embedding model",
+        contextMaxK: 0,
+        contextTiers: [],
+        quantizations: ["fp16", "int8", "api"],
+        ramTiers: ["2-4", "4-8"],
+        gpuTiers: ["none", "integrated", "4gb", "cuda"],
+        cpuTiers: ["basic", "mainstream"],
+        runtimes: ["huggingface", "python", "browser", "api"],
+        licenses: ["apache_2_0", "free_tier"],
+        offline: true,
+        speedTags: ["cpu_fast", "cloud_fast"],
+        desc: "Small, fast, high-quality embedding model for semantic search, RAG, clustering, and similarity tasks.",
+        bestFor: ["local vector search", "RAG pipelines", "CPU embeddings"],
+        order: 48
+      },
+      {
+        id: "llava-1-5",
+        name: "LLaVA 1.5",
+        provider: "Open multimodal ecosystem",
+        types: ["local", "cloud"],
+        tasks: ["vision", "multimodal", "documents", "education"],
+        params: "7B–13B class",
+        paramB: 7,
+        context: "Image + text",
+        contextMaxK: 8,
+        contextTiers: ["8k"],
+        quantizations: ["q4_k_m", "fp16", "api"],
+        ramTiers: ["8-16", "16-32"],
+        gpuTiers: ["8gb", "12gb", "16gb", "cuda"],
+        cpuTiers: ["strong", "high_end"],
+        runtimes: ["huggingface", "python", "api"],
+        licenses: ["apache_2_0", "free_tier"],
+        offline: true,
+        speedTags: ["gpu_recommended", "cloud_fast"],
+        desc: "Open vision-language model family for image question answering and multimodal understanding.",
+        bestFor: ["local image Q&A", "document visuals", "multimodal prototypes"],
+        order: 49
+      },
+      {
+        id: "gpt-5-6-luna",
+        name: "GPT-5.6 Luna",
+        provider: "OpenAI / ChatGPT Free",
+        types: ["cloud"],
+        tasks: ["chat", "education", "research", "documents", "reasoning", "coding"],
+        params: "API / managed",
+        paramB: null,
+        context: "128K",
+        contextMaxK: 128,
+        contextTiers: ["128k"],
+        quantizations: ["api"],
+        ramTiers: [],
+        gpuTiers: [],
+        cpuTiers: [],
+        runtimes: ["api"],
+        licenses: ["closed", "free_tier"],
+        offline: false,
+        speedTags: ["cloud_fast"],
+        desc: "Free-tier general AI chat model with strong conversational quality, broad knowledge, and large context.",
+        bestFor: ["everyday chat", "study help", "quick research drafts"],
+        order: 50
+      },
+      {
+        id: "claude-3-opus",
+        name: "Claude 3 Opus",
+        provider: "Anthropic",
+        types: ["cloud"],
+        tasks: ["chat", "documents", "reasoning", "coding", "research", "education"],
+        params: "API / managed",
+        paramB: null,
+        context: "200K",
+        contextMaxK: 200,
+        contextTiers: ["200k"],
+        quantizations: ["api"],
+        ramTiers: [],
+        gpuTiers: [],
+        cpuTiers: [],
+        runtimes: ["api"],
+        licenses: ["closed", "free_tier"],
+        offline: false,
+        speedTags: ["cloud_fast"],
+        desc: "Strong cloud model for long documents, careful reasoning, writing, and coding workflows.",
+        bestFor: ["long PDF analysis", "writing", "coding review"],
+        order: 51
+      },
+      {
+        id: "gemini",
+        name: "Gemini",
+        provider: "Google",
+        types: ["cloud"],
+        tasks: ["chat", "research", "multimodal", "documents", "education"],
+        params: "API / managed",
+        paramB: null,
+        context: "Varies by tier",
+        contextMaxK: 128,
+        contextTiers: ["128k", "200k"],
+        quantizations: ["api"],
+        ramTiers: [],
+        gpuTiers: [],
+        cpuTiers: [],
+        runtimes: ["api"],
+        licenses: ["closed", "free_tier"],
+        offline: false,
+        speedTags: ["cloud_fast"],
+        desc: "Google ecosystem model for research, multimodal tasks, documents, and everyday assistance.",
+        bestFor: ["Google Workspace users", "multimodal cloud tasks", "research"],
+        order: 52
+      },
+      {
+        id: "perplexity",
+        name: "Perplexity",
+        provider: "Perplexity AI",
+        types: ["cloud"],
+        tasks: ["research", "chat", "education", "documents"],
+        params: "API / managed",
+        paramB: null,
+        context: "Varies",
+        contextMaxK: 128,
+        contextTiers: ["128k"],
+        quantizations: ["api"],
+        ramTiers: [],
+        gpuTiers: [],
+        cpuTiers: [],
+        runtimes: ["api"],
+        licenses: ["closed", "free_tier"],
+        offline: false,
+        speedTags: ["cloud_fast"],
+        desc: "Web research assistant with citations, useful for source discovery and fact-checked starting points.",
+        bestFor: ["web research", "citation-first exploration", "study sources"],
+        order: 53
+      },
+      {
+        id: "glm-5-2",
+        name: "GLM-5.2",
+        provider: "Z.ai / open-weight family",
+        types: ["cloud"],
+        tasks: ["coding", "reasoning", "documents", "research", "agents", "math"],
+        params: "API / managed",
+        paramB: null,
+        context: "1M",
+        contextMaxK: 1000,
+        contextTiers: ["1m"],
+        quantizations: ["api"],
+        ramTiers: [],
+        gpuTiers: [],
+        cpuTiers: [],
+        runtimes: ["api"],
+        licenses: ["mit", "free_tier"],
+        offline: false,
+        speedTags: ["cloud_fast"],
+        desc: "High-context model family reported as strong for coding, long documents, and structured reasoning.",
+        bestFor: ["mega-context coding", "long document analysis", "free-tier prototyping"],
+        order: 54
+      },
+      {
+        id: "deepseek-v4-flash",
+        name: "DeepSeek V4 Flash",
+        provider: "DeepSeek",
+        types: ["cloud"],
+        tasks: ["chat", "coding", "reasoning", "documents", "research"],
+        params: "API / managed",
+        paramB: null,
+        context: "128K",
+        contextMaxK: 128,
+        contextTiers: ["128k"],
+        quantizations: ["api"],
+        ramTiers: [],
+        gpuTiers: [],
+        cpuTiers: [],
+        runtimes: ["api"],
+        licenses: ["free_tier", "custom"],
+        offline: false,
+        speedTags: ["cloud_fast"],
+        desc: "Free-tier cloud model option for reasoning, coding, summarization, and longer-context tasks.",
+        bestFor: ["free API experiments", "coding help", "long summaries"],
+        order: 55
+      },
+      {
+        id: "groq-free",
+        name: "Groq Free Tier",
+        provider: "Groq",
+        types: ["cloud"],
+        tasks: ["chat", "coding", "research", "agents", "education"],
+        params: "Hosted open models",
+        paramB: null,
+        context: "Varies by model",
+        contextMaxK: 128,
+        contextTiers: ["128k"],
+        quantizations: ["api"],
+        ramTiers: [],
+        gpuTiers: [],
+        cpuTiers: [],
+        runtimes: ["api"],
+        licenses: ["free_tier"],
+        offline: false,
+        speedTags: ["cloud_fast"],
+        desc: "Ultra-fast hosted inference for selected open models, useful when latency matters more than local privacy.",
+        bestFor: ["low-latency chatbots", "rapid prototyping", "hosted Llama/Qwen/Mistral"],
+        order: 56
+      },
+      {
+        id: "amazon-polly",
+        name: "Amazon Polly",
+        provider: "AWS",
+        types: ["cloud"],
+        tasks: ["tts", "education", "documents"],
+        params: "Managed service",
+        paramB: null,
+        context: "Character limits",
+        contextMaxK: 0,
+        contextTiers: [],
+        quantizations: ["api"],
+        ramTiers: [],
+        gpuTiers: [],
+        cpuTiers: [],
+        runtimes: ["api"],
+        licenses: ["free_tier", "closed"],
+        offline: false,
+        speedTags: ["cloud_fast"],
+        desc: "Cloud text-to-speech service with generous free-tier character quotas and many voice options.",
+        bestFor: ["narration", "voiceovers", "accessible learning content"],
+        order: 57
+      }
+    ];
+
+    const PRESETS = [
+      {
+        id: "all",
+        label: "🌐 Show all",
+        apply(s) {}
+      },
+      {
+        id: "8gb",
+        label: "💻 8 GB laptop",
+        apply(s) {
+          s.type = "local";
+          s.ram = ["4-8", "8-16"];
+          s.gpu = ["none", "integrated", "4gb", "6gb", "8gb"];
+          s.quant = ["q4_k_m", "q3", "q2"];
+          s.cpu = ["basic", "mainstream", "arm", "apple_silicon"];
+        }
+      },
+      {
+        id: "16gb",
+        label: "⚡ 16 GB sweet spot",
+        apply(s) {
+          s.type = "local";
+          s.ram = ["8-16", "16-32"];
+          s.gpu = ["none", "8gb", "12gb", "16gb", "metal"];
+          s.quant = ["q4_k_m", "q5_k_m"];
+          s.cpu = ["mainstream", "strong", "apple_silicon"];
+        }
+      },
+      {
+        id: "32gb",
+        label: "🚀 32 GB+ local",
+        apply(s) {
+          s.type = "local";
+          s.ram = ["16-32", "32-64", "64+"];
+          s.gpu = ["12gb", "16gb", "24gb", "48gb", "metal", "cuda"];
+          s.quant = ["q4_k_m", "q5_k_m", "q6_k"];
+          s.cpu = ["strong", "high_end", "server", "apple_silicon"];
+        }
+      },
+      {
+        id: "nogpu",
+        label: "🧠 No GPU / CPU only",
+        apply(s) {
+          s.type = "local";
+          s.gpu = ["none", "integrated"];
+          s.ram = ["4-8", "8-16", "16-32", "32-64"];
+          s.quant = ["q4_k_m", "q3", "q2"];
+          s.speed = ["cpu_fast", "cpu_usable"];
+        }
+      },
+      {
+        id: "coding",
+        label: "👨‍💻 Coding",
+        apply(s) {
+          s.tasks = ["coding", "agents", "math"];
+        }
+      },
+      {
+        id: "reasoning",
+        label: "🧩 Reasoning / Math",
+        apply(s) {
+          s.tasks = ["reasoning", "math"];
+        }
+      },
+      {
+        id: "vision",
+        label: "👁️ Vision / Multimodal",
+        apply(s) {
+          s.tasks = ["vision", "multimodal", "documents"];
+        }
+      },
+      {
+        id: "imagegen",
+        label: "🎨 Image generation",
+        apply(s) {
+          s.type = "local";
+          s.tasks = ["image_generation", "image_editing"];
+          s.gpu = ["4gb", "6gb", "8gb", "12gb", "16gb", "24gb", "48gb", "cuda", "metal"];
+          s.quant = ["fp16", "fp8", "int8", "gguf"];
+        }
+      },
+      {
+        id: "offline",
+        label: "🔒 Offline privacy",
+        apply(s) {
+          s.type = "local";
+          s.offline = "yes";
+        }
+      },
+      {
+        id: "cloudfree",
+        label: "☁️ Cloud free tier",
+        apply(s) {
+          s.type = "cloud";
+          s.license = ["free_tier"];
+        }
+      }
+    ];
+
+    function defaultState() {
+      return {
+        sort: "featured",
+        type: "all",
+        tasks: [],
+        ram: [],
+        gpu: [],
+        quant: [],
+        cpu: [],
+        runtime: [],
+        context: [],
+        speed: [],
+        license: [],
+        offline: "all"
+      };
+    }
+
+    let state = defaultState();
+
+    const el = {
+      filterGroups: document.getElementById("filterGroups"),
+      presets: document.getElementById("presets"),
+      activeFilters: document.getElementById("activeFilters"),
+      sortButtons: document.getElementById("sortButtons"),
+      grid: document.getElementById("grid"),
+      count: document.getElementById("count"),
+      empty: document.getElementById("empty"),
+      statTotal: document.getElementById("statTotal"),
+      statLocal: document.getElementById("statLocal"),
+      statCloud: document.getElementById("statCloud"),
+      statOffline: document.getElementById("statOffline"),
+      themeToggle: document.getElementById("themeToggle")
+    };
+
+    function getGroup(groupId) {
+      return FILTER_GROUPS.find((g) => g.id === groupId);
+    }
+
+    function optionLabel(groupId, value) {
+      const group = getGroup(groupId);
+      return group?.options.find((o) => o.v === value)?.l || value;
+    }
+
+    function listLabel(groupId, arr) {
+      if (!arr || !arr.length) return "—";
+      return arr.map((v) => optionLabel(groupId, v)).join(", ");
+    }
+
+    function summarize(groupId, arr, max = 2) {
+      if (!arr || !arr.length) return "—";
+      const visible = arr.slice(0, max).map((v) => optionLabel(groupId, v)).join(" / ");
+      return arr.length > max ? `${visible} +${arr.length - max}` : visible;
+    }
+
+    function isCloudOnly(entry) {
+      return entry.types.includes("cloud") && !entry.types.includes("local");
+    }
+
+    function pillText(groupId, arr, entry) {
+      if (arr && arr.length) return summarize(groupId, arr, 2);
+      if (isCloudOnly(entry) && ["ram", "gpu", "cpu"].includes(groupId)) return "Cloud / API";
+      return "—";
+    }
+
+    function detailText(groupId, arr, entry) {
+      if (arr && arr.length) return listLabel(groupId, arr);
+      if (isCloudOnly(entry) && ["ram", "gpu", "cpu"].includes(groupId)) return "Cloud / API";
+      return "—";
+    }
+
+    function typeClass(entry) {
+      if (entry.types.length > 1) return "type-both";
+      return entry.types[0] === "local" ? "type-local" : "type-cloud";
+    }
+
+    function typeLabel(entry) {
+      return entry.types.map((t) => LABEL.type[t]).join(" + ");
+    }
+
+    function updateStats() {
+      el.statTotal.textContent = MODELS.length;
+      el.statLocal.textContent = MODELS.filter((m) => m.types.includes("local")).length;
+      el.statCloud.textContent = MODELS.filter((m) => m.types.includes("cloud")).length;
+      el.statOffline.textContent = MODELS.filter((m) => m.offline).length;
+    }
+
+    function renderPresets() {
+      el.presets.innerHTML = PRESETS.map(
+        (p) => `<button type="button" class="preset" data-preset="${p.id}">${p.label}</button>`
+      ).join("");
+    }
+
+    function renderFilters() {
+      const hideLocalOnly = state.type === "cloud";
+
+      el.filterGroups.innerHTML = FILTER_GROUPS.map((group) => {
+        const selectedCount =
+          group.mode === "multi" ? state[group.id].length : state[group.id] !== "all" ? 1 : 0;
+
+        const hiddenClass = group.localOnly && hideLocalOnly ? "hidden" : "";
+
+        return `
+          <section class="filter-group ${hiddenClass}" data-group-id="${group.id}">
+            <div class="group-head">
+              <h3>${group.title}</h3>
+              ${selectedCount ? `<span class="count">${selectedCount} active</span>` : ""}
+            </div>
+            <div class="chips">
+              ${group.options
+                .map((opt) => {
+                  const active =
+                    group.mode === "single"
+                      ? state[group.id] === opt.v
+                      : state[group.id].includes(opt.v);
+
+                  return `
+                    <button
+                      type="button"
+                      class="chip ${active ? "active" : ""}"
+                      data-group="${group.id}"
+                      data-value="${opt.v}"
+                      aria-pressed="${active}"
+                    >${opt.l}</button>
+                  `;
+                })
+                .join("")}
+            </div>
+          </section>
+        `;
+      }).join("");
+    }
+
+    function renderSortButtons() {
+      el.sortButtons.innerHTML = SORT_OPTIONS.map(
+        (s) => `
+          <button
+            type="button"
+            class="sort-btn ${state.sort === s.v ? "active" : ""}"
+            data-sort="${s.v}"
+            aria-pressed="${state.sort === s.v}"
+          >${s.l}</button>
+        `
+      ).join("");
+    }
+
+    function getActiveFilterItems() {
+      const items = [];
+
+      FILTER_GROUPS.forEach((group) => {
+        if (group.mode === "single") {
+          if (state[group.id] !== "all") {
+            items.push({
+              groupId: group.id,
+              value: state[group.id],
+              label: `${group.title}: ${optionLabel(group.id, state[group.id])}`
+            });
+          }
+        } else {
+          state[group.id].forEach((value) => {
+            items.push({
+              groupId: group.id,
+              value,
+              label: optionLabel(group.id, value)
+            });
+          });
+        }
+      });
+
+      return items;
+    }
+
+    function renderActiveFilters() {
+      const items = getActiveFilterItems();
+
+      if (!items.length) {
+        el.activeFilters.innerHTML = `<span class="active-label">No filter buttons active</span>`;
+        return;
+      }
+
+      el.activeFilters.innerHTML = `
+        <span class="active-label">Active:</span>
+        ${items
+          .map(
+            (item) => `
+              <button
+                type="button"
+                class="active-chip"
+                data-remove-group="${item.groupId}"
+                data-remove-value="${item.value}"
+              >${item.label} ×</button>
+            `
+          )
+          .join("")}
+        <button type="button" class="btn small" id="clearActiveFilters">Clear all</button>
+      `;
+    }
+
+    function clearLocalFilters() {
+      state.ram = [];
+      state.gpu = [];
+      state.quant = [];
+      state.cpu = [];
+    }
+
+    function toggleMulti(groupId, value) {
+      const arr = state[groupId];
+      const idx = arr.indexOf(value);
+      if (idx >= 0) arr.splice(idx, 1);
+      else arr.push(value);
+    }
+
+    function removeFilter(groupId, value) {
+      const group = getGroup(groupId);
+      if (!group) return;
+
+      if (group.mode === "single") {
+        state[groupId] = "all";
+      } else {
+        const idx = state[groupId].indexOf(value);
+        if (idx >= 0) state[groupId].splice(idx, 1);
+      }
+
+      update();
+    }
+
+    function matchesFilters(entry) {
+      if (state.type !== "all" && !entry.types.includes(state.type)) return false;
+
+      for (const group of FILTER_GROUPS) {
+        if (group.mode !== "multi" || !group.field) continue;
+
+        const selected = state[group.id];
+        if (!selected.length) continue;
+
+        const values = entry[group.field] || [];
+        const hit = selected.some((v) => values.includes(v));
+        if (!hit) return false;
+      }
+
+      if (state.offline === "yes" && !entry.offline) return false;
+      if (state.offline === "no" && entry.offline) return false;
+
+      return true;
+    }
+
+    function sortModels(models) {
+      const arr = models.slice();
+
+      if (state.sort === "name") {
+        arr.sort((a, b) => a.name.localeCompare(b.name));
+      } else if (state.sort === "size_asc") {
+        arr.sort((a, b) => (a.paramB ?? Number.POSITIVE_INFINITY) - (b.paramB ?? Number.POSITIVE_INFINITY));
+      } else if (state.sort === "size_desc") {
+        arr.sort((a, b) => (b.paramB ?? -1) - (a.paramB ?? -1));
+      } else if (state.sort === "context_desc") {
+        arr.sort((a, b) => (b.contextMaxK ?? 0) - (a.contextMaxK ?? 0));
+      } else {
+        arr.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
+      }
+
+      return arr;
+    }
+
+    function detailRow(title, value) {
+      return `<div class="detail-row"><b>${title}</b><div>${value || "—"}</div></div>`;
+    }
+
+    function cardHTML(entry) {
+      const taskBadges = (entry.tasks || [])
+        .slice(0, 5)
+        .map((t) => `<span class="tag">${LABEL.task[t] || t}</span>`)
+        .join("");
+
+      const offlineBadge = entry.offline ? `<span class="tag offline">Offline</span>` : "";
+
+      return `
+        <article class="card" data-id="${entry.id}">
+          <div class="card-top">
+            <div>
+              <h3>${entry.name}</h3>
+              <p class="provider">${entry.provider}</p>
+            </div>
+            <span class="type-badge ${typeClass(entry)}">${typeLabel(entry)}</span>
+          </div>
+
+          <p class="desc">${entry.desc}</p>
+
+          <div class="tag-row">
+            ${taskBadges}
+            ${offlineBadge}
+          </div>
+
+          <div class="spec-pills">
+            <div class="pill"><b>Size</b><span>${entry.params}</span></div>
+            <div class="pill"><b>Context</b><span>${entry.context}</span></div>
+            <div class="pill"><b>RAM</b><span>${pillText("ram", entry.ramTiers, entry)}</span></div>
+            <div class="pill"><b>GPU</b><span>${pillText("gpu", entry.gpuTiers, entry)}</span></div>
+            <div class="pill"><b>Quant</b><span>${pillText("quant", entry.quantizations, entry)}</span></div>
+            <div class="pill"><b>Runtime</b><span>${pillText("runtime", entry.runtimes, entry)}</span></div>
+          </div>
+
+          <div class="card-actions">
+            <button class="btn small details-btn" type="button" aria-expanded="false">Show details</button>
+          </div>
+
+          <div class="details hidden">
+            ${detailRow("Deployment", typeLabel(entry))}
+            ${detailRow("Use cases", listLabel("tasks", entry.tasks))}
+            ${detailRow("Parameters", entry.params)}
+            ${detailRow("Context", entry.context)}
+            ${detailRow("System RAM", detailText("ram", entry.ramTiers, entry))}
+            ${detailRow("GPU / VRAM", detailText("gpu", entry.gpuTiers, entry))}
+            ${detailRow("Quantization", detailText("quant", entry.quantizations, entry))}
+            ${detailRow("CPU class", detailText("cpu", entry.cpuTiers, entry))}
+            ${detailRow("Runtime", detailText("runtime", entry.runtimes, entry))}
+            ${detailRow("Speed", listLabel("speed", entry.speedTags))}
+            ${detailRow("License", listLabel("license", entry.licenses))}
+            ${detailRow("Offline", entry.offline ? "Yes" : "No")}
+            ${detailRow("Best for", (entry.bestFor || []).join(" • "))}
+          </div>
+        </article>
+      `;
+    }
+
+    function renderResults() {
+      const filtered = sortModels(MODELS.filter(matchesFilters));
+
+      el.count.textContent = `${filtered.length} model${filtered.length === 1 ? "" : "s"}`;
+      el.empty.classList.toggle("hidden", filtered.length > 0);
+      el.grid.innerHTML = filtered.map(cardHTML).join("");
+    }
+
+    function update() {
+      renderFilters();
+      renderSortButtons();
+      renderActiveFilters();
+      renderResults();
+    }
+
+    function resetState() {
+      state = defaultState();
+      update();
+    }
+
+    function applyPreset(presetId) {
+      const preset = PRESETS.find((p) => p.id === presetId);
+      if (!preset) return;
+
+      state = defaultState();
+      preset.apply(state);
+
+      if (state.type === "cloud") clearLocalFilters();
+
+      update();
+    }
+
+    el.filterGroups.addEventListener("click", (e) => {
+      const chip = e.target.closest(".chip");
+      if (!chip) return;
+
+      const groupId = chip.dataset.group;
+      const value = chip.dataset.value;
+      const group = getGroup(groupId);
+      if (!group) return;
+
+      if (group.mode === "single") {
+        state[groupId] = value;
+        if (groupId === "type" && value === "cloud") {
+          clearLocalFilters();
+        }
+      } else {
+        toggleMulti(groupId, value);
+      }
+
+      update();
+    });
+
+    el.activeFilters.addEventListener("click", (e) => {
+      const removeBtn = e.target.closest(".active-chip");
+      if (removeBtn) {
+        removeFilter(removeBtn.dataset.removeGroup, removeBtn.dataset.removeValue);
+        return;
+      }
+
+      if (e.target.id === "clearActiveFilters") {
+        resetState();
+      }
+    });
+
+    el.sortButtons.addEventListener("click", (e) => {
+      const btn = e.target.closest(".sort-btn");
+      if (!btn) return;
+      state.sort = btn.dataset.sort;
+      update();
+    });
+
+    el.presets.addEventListener("click", (e) => {
+      const btn = e.target.closest(".preset");
+      if (!btn) return;
+      applyPreset(btn.dataset.preset);
+    });
+
+    el.grid.addEventListener("click", (e) => {
+      const btn = e.target.closest(".details-btn");
+      if (!btn) return;
+
+      const card = btn.closest(".card");
+      const details = card.querySelector(".details");
+      const isOpen = !details.classList.contains("hidden");
+
+      details.classList.toggle("hidden", isOpen);
+      btn.textContent = isOpen ? "Show details" : "Hide details";
+      btn.setAttribute("aria-expanded", String(!isOpen));
+    });
+
+    document.getElementById("resetFilters").addEventListener("click", resetState);
+    document.getElementById("resetTop").addEventListener("click", resetState);
+    document.getElementById("emptyReset").addEventListener("click", resetState);
+
+    function setTheme(theme) {
+      document.documentElement.dataset.theme = theme;
+      localStorage.setItem("ai-directory-theme", theme);
+      el.themeToggle.textContent = theme === "dark" ? "☀️" : "🌙";
+    }
+
+    el.themeToggle.addEventListener("click", () => {
+      const current = document.documentElement.dataset.theme;
+      setTheme(current === "dark" ? "light" : "dark");
+    });
+
+    const savedTheme = localStorage.getItem("ai-directory-theme");
+    if (savedTheme) {
+      setTheme(savedTheme);
+    } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+
+    renderPresets();
+    updateStats();
+    update();
+  </script>
+</body>
+</html>
